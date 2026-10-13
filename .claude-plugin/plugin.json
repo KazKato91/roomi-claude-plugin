@@ -1,0 +1,23 @@
+{
+  "name": "roomi",
+  "displayName": "Roomi",
+  "version": "0.1.0",
+  "description": "Deploy a demo to Roomi in one sentence, then create viewer links and read what viewers did and said.",
+  "author": {
+    "name": "Roomi",
+    "url": "https://getroomi.com"
+  },
+  "homepage": "https://getroomi.com/docs/claude",
+  "keywords": [
+    "deploy",
+    "pitch",
+    "demo"
+  ],
+  "documentationUrl": "https://getroomi.com/docs/claude",
+  "supportUrl": "https://getroomi.com/docs/troubleshooting",
+  "privacyPolicyUrl": "https://getroomi.com/privacy",
+  "termsOfServiceUrl": "https://getroomi.com/terms",
+  "repository": "https://github.com/KazKato91/roomi-claude-plugin",
+  "license": "MIT",
+  "icon": "./icon.png"
+}

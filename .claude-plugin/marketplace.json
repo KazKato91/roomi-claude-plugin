@@ -1,0 +1,14 @@
+{
+  "name": "roomi",
+  "description": "Roomi's plugin for Claude Code: deploy a demo from its repository, share it with a link per viewer, and read what each of them did.",
+  "owner": {
+    "name": "Roomi",
+    "url": "https://getroomi.com"
+  },
+  "plugins": [
+    {
+      "name": "roomi",
+      "source": "./"
+    }
+  ]
+}

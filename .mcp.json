@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "roomi": {
+      "type": "http",
+      "url": "https://mcp.getroomi.com/mcp"
+    }
+  }
+}
