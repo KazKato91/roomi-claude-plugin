@@ -1,7 +1,7 @@
 {
   "name": "roomi",
   "displayName": "Roomi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Deploy a demo to Roomi in one sentence, then create viewer links and read what viewers did and said.",
   "author": {
     "name": "Roomi",

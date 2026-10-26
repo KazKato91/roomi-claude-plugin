@@ -60,6 +60,13 @@ says, and stop at each decision.
    then run it again with their answers as flags. Show the `pitch.json` it
    wrote. Never pass `--force` unless the user asked to replace theirs.
 
+   **The type of room.** `roomi init` also asks "A standard room, or an
+   immersive one?", and with nobody at the terminal it writes a standard
+   room. Relay it as the others: pass `--room immersive`, or add
+   `"room": "immersive"` beside `kind` in `pitch.json`, only on the user's
+   yes. Never choose it for them. The type changes only with a new deploy,
+   and every viewer link stays.
+
    **Then read `PITCH.md`.** It is the guide `roomi init` writes for any
    coding agent, drawn from the docs of the `roomi` installed here: the rules,
    the container build contract, every field of `pitch.json` and how to write
@@ -115,6 +122,12 @@ says, and stop at each decision.
    earlier step's data): propose the fix to the story, as in step 5. Do not
    try fixes in the user's code unasked.
 
+   An immersive room's rehearsal adds a `type:` line. If it says `FAIL type`,
+   the workspace's plan has no immersive rooms, or they are not available
+   yet; nothing was built or sent. Show it, and ask whether to deploy it as
+   a standard room (take the `room` line out) or move the workspace's plan
+   first. Do not change `room`, or the plan, unasked.
+
 9. **Ask.** End your turn with one direct question, such as "Publish this to
    Roomi?", and wait. Anything other than a clear yes is a no.
 
@@ -124,7 +137,9 @@ says, and stop at each decision.
 
    **If it fails, stop.** Show its output in full, say what it says went
    wrong, and do not run it again: a deploy that failed once fails the same
-   way, and each attempt spends one of the plan's deploys. A `fetch failed`
+   way, and each attempt spends one of the plan's deploys. A `FAIL type`
+   after `ok   build: registered` means the platform did not keep `room`:
+   the build was not made live, so say so and stop. A `fetch failed`
    right after `ok   upload` is not a network blip: the platform refused the
    build while unpacking it, usually for its size. Run `roomi validate`, and
    check the build against the static limits (at most 5,000 files, 32 MB per
@@ -139,8 +154,12 @@ says, and stop at each decision.
    it drafts the card from the story, rehearses it, and lists only on a yes.
    On a paid plan,
    ask whether they want a viewer link, and for whom (a name,
-   and optionally an email and an expiry in days). On a yes, create it with the
-   roomi MCP server's `create_link` tool, or with `roomi link <name>` if
+   and optionally an email and an expiry in days). If they give an email, ask
+   whether Roomi should email the link to that person for them, or whether
+   they will send it themselves; never assume either way. On a yes, create it
+   with the roomi MCP server's `create_link` tool (`send: true` to email it:
+   it rehearses first, then `commit: true` on their yes to what it shows; or
+   `send: false`), or with `roomi link <name> [--email <address> --send]` if
    the MCP server is not connected. Give the URL to the user in that reply and
    write it nowhere else. Say that `get_link` (or `roomi link copy <name>`)
    shows it again if it is lost, that it can be revoked with `revoke_link`, and
